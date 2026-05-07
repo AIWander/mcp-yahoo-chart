@@ -1,0 +1,14 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  build:
+    # Skip CI on the template repo itself — the placeholders won't compile
+    # until workflow:api_graduate substitutes them. CI runs only on
+    # graduated downstream repos.
+    if: github.repository != 'AIWander/mcp-template-from-api'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release
+      - run: cargo test

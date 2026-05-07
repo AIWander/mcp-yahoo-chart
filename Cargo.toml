@@ -1,0 +1,28 @@
+[package]
+name = "${API_NAME_UNDERSCORE}"
+version = "0.1.0"
+edition = "2021"
+description = "${API_DESCRIPTION}"
+license = "MIT"
+repository = "https://github.com/AIWander/mcp-${API_NAME_DASH}"
+
+[[bin]]
+name = "${API_NAME_DASH}"
+path = "src/main.rs"
+
+[dependencies]
+rmcp = { version = "=0.16.0", features = ["server", "macros", "transport-io"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "io-std"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1.0"
+schemars = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
