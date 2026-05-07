@@ -1,13 +1,13 @@
 [package]
-name = "${API_NAME_UNDERSCORE}"
+name = "yahoo_chart"
 version = "0.1.0"
 edition = "2021"
-description = "${API_DESCRIPTION}"
+description = "Yahoo Finance chart data"
 license = "MIT"
-repository = "https://github.com/AIWander/mcp-${API_NAME_DASH}"
+repository = "https://github.com/AIWander/mcp-yahoo-chart"
 
 [[bin]]
-name = "${API_NAME_DASH}"
+name = "yahoo-chart"
 path = "src/main.rs"
 
 [dependencies]
